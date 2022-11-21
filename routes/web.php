@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,24 +13,24 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/', function(){
-    return view("guest.home");
+Route::get('/', function () {
+    return view('admin.home');
 })->name('index');
 
+Auth::routes();
 
-Route::middleware('auth')
-    ->namespace('Admin')
-    ->name('admin.')
-    ->prefix('admin')
-    ->group(function(){
-        Route::get('/', 'HomeController@index')->name('home');
-        Route::resource('posts', 'PostController');
-    });
+Route::middleware('auth')  //si collega alla cartella middleware
+->namespace('Admin')
+->name('admin.')   //cartella admin dove dentro ci sono i file
+->prefix('admin')
+->group(function () {
+    Route::get('/' , 'HomeController@index') // rotta se utente autenticato
+    ->name('index');
+    Route::resource('posts' , 'PostController' );
+    Route::resource('categories', 'CategoryController');
+}
+);
 
-Route::get("{any?}", function(){
-    return redirect()->route('index');
+Route::get('{any?}', function() {  // per qualsiasi altra rotta mandami in guest.home
+    return view("guest.home");
 })->where("any", ".*");

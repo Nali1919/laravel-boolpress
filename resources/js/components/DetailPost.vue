@@ -25,8 +25,8 @@ export default {
     methods: {
         loadPage(url) {
             console.log(url);
-            axios.get(url).then(({ data }) => {
-                this.posts = data.results;
+            axios.get(url).then(({ response }) => {
+                this.posts = response.data.resultsS;
                 console.log(this.posts);
             }
             )

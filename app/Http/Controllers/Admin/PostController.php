@@ -80,15 +80,9 @@ class PostController extends HomeController
      */
     public function show($id)
     {
-       $posts = Post::find($id);
+      $posts = Post::find($id);
+    return response()->json($posts);
 
-	    $data = [
-	    'results' => $posts,
-	    'success' => isset($posts)  //convertito in valore booleano
-
-	    ];
-
-	    return response()->json($data);
 
 
     }

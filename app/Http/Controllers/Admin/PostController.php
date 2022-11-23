@@ -78,9 +78,19 @@ class PostController extends HomeController
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        return view('admin.posts.show', compact('post'));
+       $posts = Post::find($id);
+
+	    $data = [
+	    'results' => $posts,
+	    'success' => isset($posts)  //convertito in valore booleano
+
+	    ];
+
+	    return response()->json($data);
+
+
     }
 
     /**

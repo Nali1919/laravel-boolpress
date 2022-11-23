@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Lista Post</h1>
-        <router-link to="/" class="nav1">Posts</router-link>
+        <router-link to="/">Posts</router-link>
         <router-link to="/Contact" class="g">Vai Alla pagina Contatti</router-link>
         <router-view></router-view>
 

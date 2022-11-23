@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/posts','Api\PostController@index'); //rotta Api Postcontroller
+Route::get('/posts','Api\PostController'); //rotta Api Postcontroller
 
 /*
 Route::middleware('auth:api')->get('/user', function (Request $request) {

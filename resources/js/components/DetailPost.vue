@@ -25,11 +25,11 @@ export default {
     methods: {
         loadPage(url) {
             console.log(url);
-            axios.get(url).then(({ response }) => {
+            axios.get(url).then((response => {
                 this.posts = response.data.resultsS;
                 console.log(this.posts);
             }
-            )
+            ))
         }
     }
 
